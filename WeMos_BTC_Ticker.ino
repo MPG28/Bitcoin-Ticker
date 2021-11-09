@@ -1,13 +1,5 @@
 
 // Bitcoin Ticker with smiley/sad face.
-// with Voltage Divider (2x 10K resistor)
-/*
-  Resistors are aligned in series.
-  One end goes to Battery - and also to Arduino GND
-  The other goes to Battery + and also to Arduino Vin
-  The middle (connection between two resistors) goes to Arduino A0
-*/
-
 
 #include <ESP8266WiFi.h>
 #include <ArduinoJson.h>
@@ -27,8 +19,8 @@ int threshold = 1;
 int lastKnown = 0;
 
 // WiFi settings
-const char* ssid     = "Tudorhouse";
-const char* password = "27tudorstreet";
+const char* ssid     = "xxxxxxx";
+const char* password = "xxxxxxxxxxx";
 
 // API server
 const char* host = "api.coindesk.com";
@@ -60,19 +52,6 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-
-// byte btc[8] =
-//      {
-//       B00100,
-//       B11110,
-//       B10101,
-//       B11110,
-//       B10101,
-//       B11110,
-//       B00100,
-//       B00000
-//       };
-//      lcd.createChar(1, btc);
 
 }
      
@@ -160,30 +139,7 @@ void loop() {
     if (price == 0) {lcd.print(lastKnown);}         // Print BTC price
       else lcd.print(lastKnown);
       
-  
-   //   lcd.setCursor(13,1); // Special characture
-   //   lcd.write(1);
-        
-
-
-    
-               
-   //        if (previousValue == 0) {                      // sad face
-   //          previousValue = price;                      //
-   //       }                                              //
-   //       if (price < (previousValue - threshold))  {    //
-   //                                                      //
-   //      lcd.setCursor(11, 0);                           //
-   //      lcd.print("=(");
-   //        }
-   //
-   //         if (price > (previousValue + threshold)) {     // happy face
-   //         lcd.setCursor(11, 0);                         //
-    //        lcd.print("=)");                             //
-    //       }
-    //
-    //   previousValue = price;
-
+ 
 
   int sensorValue = analogRead(A0); //read the A0 pin value
   float voltage = sensorValue * (3.00 / 1023.00) * 2; //convert the value to a true voltage.
@@ -191,9 +147,6 @@ void loop() {
   lcd.setCursor(11, 1);
   lcd.print(voltage);
   lcd.print("v");
-
-
- 
  
   // Wait 5 seconds
   delay(1000);
